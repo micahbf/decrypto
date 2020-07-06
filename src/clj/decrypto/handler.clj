@@ -3,6 +3,7 @@
     [decrypto.middleware :as middleware]
     [decrypto.layout :refer [error-page]]
     [decrypto.routes.home :refer [home-routes]]
+    [decrypto.routes.words :refer [words-routes]]
     [reitit.ring :as ring]
     [ring.middleware.content-type :refer [wrap-content-type]]
     [ring.middleware.webjars :refer [wrap-webjars]]
@@ -17,7 +18,7 @@
   :start
   (ring/ring-handler
     (ring/router
-      [(home-routes)])
+      [(home-routes) (words-routes)])
     (ring/routes
       (ring/create-resource-handler
         {:path "/"})
